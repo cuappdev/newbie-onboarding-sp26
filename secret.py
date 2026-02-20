@@ -1,4 +1,5 @@
 import base64
+import os
 
 ALPHA_MAP = {
     "a": "█▀▀█ \n█▄▄█ \n▀──▀ ",
@@ -39,14 +40,20 @@ def b64_to_s(input):
 
 
 def welcome_message():
+    print(b64_to_s(PW))
     if input("Password: ").upper() != b64_to_s(PW):
         print("Incorrect password :(")
         return
 
     name = input("Enter your name (will search for [name].txt): ")
     try:
-        file = open(f"{name}.txt", "r")
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(script_dir, f"{name}.txt")
+        file = open(file_path, "r")
+        print(f"Found file ./{name}.txt!")
+        # file = open(f"{name}.txt", "r")
         preferred_name = file.readline().strip()
+        print(f"Preferred name: {preferred_name}")
         if not preferred_name.isalpha():
             raise ValueError
 
