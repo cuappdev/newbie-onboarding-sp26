@@ -47,11 +47,11 @@ def welcome_message():
 
     name = input("Enter your name (will search for [name].txt): ")
     try:
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        file_path = os.path.join(script_dir, f"{name}.txt")
-        file = open(file_path, "r")
-        print(f"Found file ./{name}.txt!")
-        # file = open(f"{name}.txt", "r")
+        # script_dir = os.path.dirname(os.path.abspath(__file__))
+        # file_path = os.path.join(script_dir, f"{name}.txt")
+        # file = open(file_path, "r")
+        # print(f"Found file ./{name}.txt!")
+        file = open(f"{name}.txt", "r")
         preferred_name = file.readline().strip()
         print(f"Preferred name: {preferred_name}")
         if not preferred_name.isalpha():
